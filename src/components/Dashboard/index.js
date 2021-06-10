@@ -5,22 +5,27 @@ import {DashboardWrapper} from './stlyes';
 import {ResponsiveContactButton} from '../Contact/styles';
 import Contact from '../Contact';
 import Responsive from '../Contact/Responsive';
-const Dashboard = ({user}) => {
+const Dashboard = ({username}) => {
     const [messages, setMessages] = useState([]);
     const [users, setUsers] = useState([]);
+    const [currentUser, setCurrentUser] = useState();
     const [toggleContact, setToggleContact] = useState(false);
     const socketRef = useRef();
+    // https://schude-react-chat-app.herokuapp.com/
     useEffect(() => {
-        socketRef.current = socket.connect('https://schude-react-chat-app.herokuapp.com/');
-        socketRef.current.emit('join', user);
-        socketRef.current.emit('users', user);
-    }, [user]);
+        socketRef.current = socket.connect('http://localhost:5000');
+        socketRef.current.emit('join', {username});
+    }, [username]);
 
     const listenServer = useCallback(() => {
         socketRef.current.on('message', (data) => {
             setMessages((prev) => [...prev, data]);
         });
-        socketRef.current.on('users', (users) => {
+        socketRef.current.on('currentUser', (currentUser) => {
+            console.log(currentUser);
+            setCurrentUser(currentUser);
+        });
+        socketRef.current.on('updateUsers', (users) => {
             setUsers([...users]);
         });
     }, [socketRef]);
@@ -30,7 +35,8 @@ const Dashboard = ({user}) => {
     }, [listenServer]);
 
     const sendMessageToServer = (message) => {
-        socketRef.current.emit('message', {user, message});
+        let messageBody = {...currentUser, message};
+        socketRef.current.emit('message', messageBody);
     };
     return (
         <DashboardWrapper>
@@ -43,7 +49,7 @@ const Dashboard = ({user}) => {
             <Chatbox
                 sendMessageToServer={sendMessageToServer}
                 messages={messages}
-                user={user}
+                currentUser={currentUser}
             ></Chatbox>
             <Contact users={users} />
         </DashboardWrapper>

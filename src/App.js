@@ -3,13 +3,13 @@ import Dashboard from "./components/Dashboard/index";
 import Login from "./components/Login/index";
 
 function App() {
-    const [user, setUser] = useState("");
+    const [username, setUsername] = useState("");
     return (
         <div className="App">
-            {user ? (
-                <Dashboard user={user} />
+            {username ? (
+                <Dashboard username={username} />
             ) : (
-                <Login setUser={setUser} />
+                <Login setUsername={setUsername} />
             )}
         </div>
     );

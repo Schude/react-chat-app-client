@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 import { LoginPage, Form, InputField, Button } from "./styles";
-const Login = ({ setUser }) => {
+const Login = ({ setUsername }) => {
     const usernameRef = useRef("");
     const handleSubmit = (e) => {
         e.preventDefault();
-        setUser({ id: Date.now(), username: usernameRef.current.value });
+        setUsername( usernameRef.current.value );
     };
     return (
         <LoginPage>

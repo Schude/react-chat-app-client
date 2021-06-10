@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ChatboxWrapper } from "./styles";
 import Chat from "./ChatFlow";
 import Send from "./ChatForm";
-const Chatbox = ({ sendMessageToServer, messages, user }) => {
+const Chatbox = ({ sendMessageToServer, messages, currentUser }) => {
     const [newMessage, setNewMessage] = useState("");
 
     const handleSendMessage = (e) => {
@@ -15,7 +15,7 @@ const Chatbox = ({ sendMessageToServer, messages, user }) => {
     };
     return (
         <ChatboxWrapper>
-            <Chat user={user} messages={messages} />
+            <Chat currentUser={currentUser} messages={messages} />
             <Send
                 handleChange={handleChange}
                 handleSubmit={handleSendMessage}

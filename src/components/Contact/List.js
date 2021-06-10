@@ -5,7 +5,7 @@ const List = ( {users}) => {
         <ContactList>
                     {users &&
                         users.map((user) => (
-                            <ContactItem key={user.id}>
+                            <ContactItem key={user.clientId}>
                                 {user.username}
                             </ContactItem>
                         ))}

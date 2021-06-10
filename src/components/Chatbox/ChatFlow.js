@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react';
 import {ChatFlow, Message, Sender, MessageText} from './styles';
-const Chat = ({user, messages}) => {
+const Chat = ({currentUser, messages}) => {
     //keeps scroll at bottom
+    console.log(currentUser,messages)
     useEffect(() => {
         var element = document.getElementById('chat-flow');
         element.scrollTop = element.scrollHeight;
@@ -13,20 +14,26 @@ const Chat = ({user, messages}) => {
                     <Message
                         key={i}
                         flex={
-                            mes.user.id !== user.id ? 'flex-start' : 'flex-end'
+                            mes.clientId !== currentUser.clientId
+                                ? 'flex-start'
+                                : 'flex-end'
                         }
                     >
                         <Sender
                             clr={
-                                mes.user.id !== user.id ? '#00b4fd' : '#f96368'
+                                mes.clientId !== currentUser.clientId
+                                    ? '#00b4fd'
+                                    : '#f96368'
                             }
                         >
                             {' '}
-                            {mes.user.username}
+                            {mes.username}
                         </Sender>
                         <MessageText
                             bgClr={
-                                mes.user.id !== user.id ? '#00b4fd' : '#f96368'
+                                mes.clientId !== currentUser.clientId
+                                    ? '#00b4fd'
+                                    : '#f96368'
                             }
                         >
                             {mes.message}{' '}
