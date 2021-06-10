@@ -2,13 +2,14 @@ import React, {useEffect, useContext} from 'react';
 import {Context} from '../../context/ContextProvider';
 import {ChatFlow, Message, Sender, MessageText} from './styles';
 const Chat = () => {
-    const {messages, currentUser} = useContext(Context);
+    const {messages, currentUser,playSound} = useContext(Context);
 
     //keeps scroll at bottom
     useEffect(() => {
         var element = document.getElementById('chat-flow');
         element.scrollTop = element.scrollHeight;
-    }, [messages]);
+        playSound()
+    }, [messages, playSound]);
 
     return (
         <ChatFlow id="chat-flow">
