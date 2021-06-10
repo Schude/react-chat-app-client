@@ -11,9 +11,8 @@ const Dashboard = ({username}) => {
     const [currentUser, setCurrentUser] = useState();
     const [toggleContact, setToggleContact] = useState(false);
     const socketRef = useRef();
-    // https://schude-react-chat-app.herokuapp.com/
     useEffect(() => {
-        socketRef.current = socket.connect('http://localhost:5000');
+        socketRef.current = socket.connect('https://schude-react-chat-app.herokuapp.com');
         socketRef.current.emit('join', {username});
     }, [username]);
 
