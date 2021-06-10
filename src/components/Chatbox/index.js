@@ -1,26 +1,13 @@
-import React, { useState } from "react";
-import { ChatboxWrapper } from "./styles";
-import Chat from "./ChatFlow";
-import Send from "./ChatForm";
-const Chatbox = ({ sendMessageToServer, messages, currentUser }) => {
-    const [newMessage, setNewMessage] = useState("");
+import React from 'react';
+import {ChatboxWrapper} from './styles';
+import Chat from './ChatFlow';
+import Send from './ChatForm';
 
-    const handleSendMessage = (e) => {
-        e.preventDefault();
-        sendMessageToServer(newMessage);
-        setNewMessage("");
-    };
-    const handleChange = (event) => {
-        setNewMessage(event.target.value);
-    };
+const Chatbox = () => {
     return (
         <ChatboxWrapper>
-            <Chat currentUser={currentUser} messages={messages} />
-            <Send
-                handleChange={handleChange}
-                handleSubmit={handleSendMessage}
-                newMessage={newMessage}
-            />
+            <Chat />
+            <Send />
         </ChatboxWrapper>
     );
 };

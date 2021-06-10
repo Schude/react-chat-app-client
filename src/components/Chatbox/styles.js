@@ -89,4 +89,3 @@ export const Sender = styled.span`
     color: ${(props) => props.clr};
     margin-bottom: 8px;
 `;
-

@@ -1,10 +1,11 @@
-import React, { useRef } from "react";
-import { LoginPage, Form, InputField, Button } from "./styles";
-const Login = ({ setUsername }) => {
-    const usernameRef = useRef("");
+import React, {useContext} from 'react';
+import {Context} from '../../context/ContextProvider';
+import {LoginPage, Form, InputField, Button} from './styles';
+const Login = () => {
+    const {usernameRef, setUsername} = useContext(Context);
     const handleSubmit = (e) => {
         e.preventDefault();
-        setUsername( usernameRef.current.value );
+        setUsername(usernameRef.current.value);
     };
     return (
         <LoginPage>

@@ -1,18 +1,11 @@
-import React, { useState } from "react";
-import Dashboard from "./components/Dashboard/index";
-import Login from "./components/Login/index";
+import React, {useContext} from 'react';
+import Dashboard from './components/Dashboard/index';
+import Login from './components/Login/index';
+import {Context} from './context/ContextProvider';
 
 function App() {
-    const [username, setUsername] = useState("");
-    return (
-        <div className="App">
-            {username ? (
-                <Dashboard username={username} />
-            ) : (
-                <Login setUsername={setUsername} />
-            )}
-        </div>
-    );
+    const {username} = useContext(Context);
+    return <div className="App">{username ? <Dashboard /> : <Login />}</div>;
 }
 
 export default App;

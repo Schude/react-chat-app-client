@@ -29,7 +29,6 @@ export const Form = styled.form`
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
-
 `;
 export const InputField = styled.input`
     border-radius: 5px;
@@ -65,7 +64,7 @@ export const Button = styled.button`
     }
     @media only screen and (max-width: 600px) {
         & {
-            margin:auto 8px;
+            margin: auto 8px;
         }
     }
 `;

@@ -1,12 +1,12 @@
 import React from 'react';
 import List from './List';
 import {ResponsiveContact, Title} from './styles';
-const Contact = ({users}) => {
+const Contact = () => {
     return (
         <div>
             <ResponsiveContact>
                 <Title> Users </Title>
-                <List  users = {users} />
+                <List />
             </ResponsiveContact>
         </div>
     );
