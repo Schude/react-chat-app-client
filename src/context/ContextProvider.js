@@ -22,7 +22,7 @@ const ContextProvider = (props) => {
     const [connectSound] = useSound(ConnectSound, {volume: 0.4});
 
     const connectServer = useCallback(() => {
-        socketRef.current = socket.connect('http://localhost:5000');
+        socketRef.current = socket.connect('https://schude-react-chat-app.herokuapp.com/');
         socketRef.current.emit('join', {username});
         connectSound();
     }, [connectSound, username]);
