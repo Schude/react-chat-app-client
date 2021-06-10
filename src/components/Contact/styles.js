@@ -46,14 +46,6 @@ export const ContactList = styled.ul`
     ::-webkit-scrollbar-thumb:hover {
         background: #da3e4d;
     }
-    @media only screen and (max-width: 750px) {
-        & {
-            position: absoulute;
-            z-index: 5;
-            left: 50%;
-            width: 150px;
-        }
-    }
 `;
 
 export const ContactItem = styled.li`
@@ -86,14 +78,12 @@ export const ResponsiveContact = styled.div`
     flex-flow: column;
     position: absolute;
     z-index: 5;
-    left: 32%;
+    left: 50%;
+    margin-left: -75px;
     top: 1%;
     width: 150px;
     background-color: rgba(11, 151, 155, 1);
 
-    & h1 {
-        display: none;
-    }
     @media only screen and (min-width: 750px) {
         & {
             display: none;
