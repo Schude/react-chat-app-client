@@ -52,6 +52,7 @@ export const ContactItem = styled.li`
     margin: 8px 0;
     font-size: 18px;
     color: #f7e160;
+    text-align:center;
     font-weight: 500;
 `;
 export const ResponsiveContactButton = styled.button`
